@@ -6,4 +6,3 @@ O grupo é composto por:
 
 *Jociel de Jesus Pessoa* </br>
 
-

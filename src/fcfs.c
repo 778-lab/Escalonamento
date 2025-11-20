@@ -17,3 +17,31 @@ typedef struct {
     int turnaround;       // Tempo total (espera + execução)
 } Processo;
 
+int main() {
+    int n;
+
+
+    printf("== Escalonamento FCFS ==\n");
+    printf("Informe a quantidade de processos: ");
+    scanf("%d", &n);
+
+
+    Processo p[n];
+
+
+    // Entrada dos dados dos processos
+    for (int i = 0; i < n; i++) {
+        p[i].id = i + 1;
+
+
+        printf("\nProcesso P%d\n", p[i].id);
+        printf("Tempo de chegada: ");
+        scanf("%d", &p[i].chegada);
+
+
+        printf("Tempo de execucao (burst): ");
+        scanf("%d", &p[i].burst);
+    }
+
+}
+

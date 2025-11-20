@@ -60,6 +60,45 @@ int main() {
 
     int tempoAtual = 0;
 
+// Cálculo de tempo de espera e turnaround
+    for (int i = 0; i < n; i++) {
+
+
+        // Se o processo chegou depois do tempo atual, CPU fica ociosa
+        if (tempoAtual < p[i].chegada) {
+            tempoAtual = p[i].chegada;
+        }
+
+
+        // Tempo de espera = tempo atual - chegada
+        p[i].espera = tempoAtual - p[i].chegada;
+
+
+        // Tempo de turnaround = espera + execucao
+        p[i].turnaround = p[i].espera + p[i].burst;
+
+
+        // Avança o tempo
+        tempoAtual += p[i].burst;
+    }
+
+
+    // Resultado final
+    printf("\n===== Tabela Final (FCFS) =====\n");
+    printf("Proc\tCheg\tBurst\tEspera\tTurnaround\n");
+
+
+    for (int i = 0; i < n; i++) {
+        printf("P%d\t%d\t%d\t%d\t%d\n",
+               p[i].id,
+               p[i].chegada,
+               p[i].burst,
+               p[i].espera,
+               p[i].turnaround);
+    }
+
+
+    return 0;
 
 }
 

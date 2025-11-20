@@ -43,5 +43,23 @@ int main() {
         scanf("%d", &p[i].burst);
     }
 
+
+
+// Garantir ordem de chegada (caso o usuário informe fora de ordem)
+    // FCFS usa ordenação crescente pelo tempo de chegada
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (p[i].chegada > p[j].chegada) {
+                Processo temp = p[i];
+                p[i] = p[j];
+                p[j] = temp;
+            }
+        }
+    }
+
+
+    int tempoAtual = 0;
+
+
 }
 

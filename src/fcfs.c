@@ -10,10 +10,10 @@
 */
 
 typedef struct {
-    int id;               // Identificação do processo (P1, P2, …)
-    int chegada;          // Tempo de chegada
-    int burst;            // Tempo de execução (CPU burst)
-    int espera;           // Tempo de espera
+    int id;               
+    int chegada;         
+    int burst;            // Tempo de execução
+    int espera;           
     int turnaround;       // Tempo total (espera + execução)
 } Processo;
 
@@ -29,7 +29,7 @@ int main() {
     Processo p[n];
 
 
-    // Entrada dos dados dos processos
+    // Leitura dos dados 
     for (int i = 0; i < n; i++) {
         p[i].id = i + 1;
 
@@ -46,7 +46,6 @@ int main() {
 
 
 // Garantir ordem de chegada (caso o usuário informe fora de ordem)
-    // FCFS usa ordenação crescente pelo tempo de chegada
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (p[i].chegada > p[j].chegada) {

@@ -16,7 +16,7 @@ int main() {
 
     struct Processo p[n];
 
-    // Entrada dos processos
+    // Entrada de dados
     for(int i = 0; i < n; i++) {
         p[i].id = i + 1;
 
@@ -28,7 +28,7 @@ int main() {
         scanf("%d", &p[i].prioridade);
     }
 
-    // Ordenação por prioridade
+    // Ordenação por prioridade (menor prioridade primeiro)
     for(int i = 0; i < n; i++) {
         for(int j = i + 1; j < n; j++) {
             if(p[j].prioridade < p[i].prioridade) {
@@ -39,20 +39,18 @@ int main() {
         }
     }
 
- // Cálculo dos tempos
+    // Cálculo dos tempos
     p[0].tempo_espera = 0;
     p[0].turnaround = p[0].burst;
-
 
     for(int i = 1; i < n; i++) {
         p[i].tempo_espera = p[i-1].tempo_espera + p[i-1].burst;
         p[i].turnaround = p[i].tempo_espera + p[i].burst;
     }
 
-
+    // Exibição dos resultados
     printf("\n\n----- RESULTADOS (Priority Scheduling) -----\n");
     printf("ID\tBurst\tPrioridade\tEspera\tTurnaround\n");
-
 
     for(int i = 0; i < n; i++) {
         printf("%d\t%d\t%d\t\t%d\t%d\n",
@@ -61,3 +59,18 @@ int main() {
         );
     }
 
+    // Cálculo de médias
+    float mediaE = 0, mediaT = 0;
+    for(int i = 0; i < n; i++) {
+        mediaE += p[i].tempo_espera;
+        mediaT += p[i].turnaround;
+    }
+
+    mediaE /= n;
+    mediaT /= n;
+
+    printf("\nTempo medio de espera: %.2f", mediaE);
+    printf("\nTempo medio de retorno: %.2f\n", mediaT);
+
+    return 0;
+}

@@ -39,4 +39,25 @@ int main() {
         }
     }
 
+ // Cálculo dos tempos
+    p[0].tempo_espera = 0;
+    p[0].turnaround = p[0].burst;
+
+
+    for(int i = 1; i < n; i++) {
+        p[i].tempo_espera = p[i-1].tempo_espera + p[i-1].burst;
+        p[i].turnaround = p[i].tempo_espera + p[i].burst;
+    }
+
+
+    printf("\n\n----- RESULTADOS (Priority Scheduling) -----\n");
+    printf("ID\tBurst\tPrioridade\tEspera\tTurnaround\n");
+
+
+    for(int i = 0; i < n; i++) {
+        printf("%d\t%d\t%d\t\t%d\t%d\n",
+            p[i].id, p[i].burst, p[i].prioridade,
+            p[i].tempo_espera, p[i].turnaround
+        );
+    }
 
